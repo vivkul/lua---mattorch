@@ -1,11 +1,24 @@
+This is mattorch version for lua 5.2
+
 DEPENDENCIES:
 Torch7 (www.torch.ch)
 
 INSTALL:
-$ torch-rocks install mattorch
+First find "matlab_root" by following command in matlab command line
+> matlabroot
+
+Now install using following commands:
+$ git clone https://github.com/vivkul/lua---mattorch.git
+$ cd lua---mattorch
+$ mkdir build
+$ cd build
+$ cmake -DMATLAB_ROOT=matlab_root ..
+$ cd ..
+$ luarocks make
+
 
 USE:
-$ torch
+$ th
 > require 'mattorch'
 -- save:
 > tensor1 = torch.Tensor(...)

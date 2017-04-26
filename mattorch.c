@@ -51,6 +51,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define luaL_reg luaL_Reg
+
 // Loader
 static int load_l(lua_State *L) {
   // get args
@@ -324,6 +326,9 @@ static const struct luaL_reg matlab [] = {
 };
 
 int luaopen_libmattorch (lua_State *L) {
-  luaL_openlib(L, "libmattorch", matlab, 0);
+  //luaL_openlib(L, "libmattorch", matlab, 0);
+  lua_newtable(L);
+  luaL_setfuncs(L,matlab,0);
+  lua_setglobal(L,"libmattorch");
   return 1;
 }
